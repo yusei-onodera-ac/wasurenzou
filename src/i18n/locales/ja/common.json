@@ -1,0 +1,26 @@
+{
+  "appName": "わすれんぞう",
+  "appSubtitle": "忘れる前に、ここにタスクを。",
+  "untitledTask": "タスク",
+  "actions": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "close": "閉じる",
+    "delete": "削除",
+    "restore": "復元",
+    "complete": "完了",
+    "edit": "編集",
+    "yes": "はい",
+    "back": "戻る"
+  },
+  "editMenu": {
+    "title": "どうする？"
+  },
+  "confirmDelete": {
+    "title": "これは手放す?",
+    "message": "このタスクはもう戻ってきません。"
+  },
+  "confirmComplete": {
+    "title": "このタスクは無事完了しましたか？"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "appName": "와스렌조",
+  "appSubtitle": "잊어버리기 전에, 할 일을 여기에.",
+  "untitledTask": "할 일",
+  "actions": {
+    "save": "저장",
+    "cancel": "취소",
+    "close": "닫기",
+    "delete": "삭제",
+    "restore": "복원",
+    "complete": "완료",
+    "edit": "편집"
+  },
+  "editMenu": {
+    "title": "무엇을 할까요?"
+  },
+  "confirmDelete": {
+    "title": "이건 놓아줄까요?",
+    "message": "이 할 일은 다시 돌아오지 않아요."
+  },
+  "confirmComplete": {
+    "title": "완료할까요?",
+    "message": "완료로 기록됩니다."
+  }
+}

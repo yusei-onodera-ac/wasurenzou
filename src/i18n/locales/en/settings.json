@@ -1,0 +1,34 @@
+{
+  "title": "Settings",
+  "language": {
+    "label": "Language",
+    "system": "System",
+    "ja": "日本語",
+    "en": "English",
+    "ko": "한국어",
+    "zh": "中文"
+  },
+  "premium": {
+    "label": "Premium",
+    "unlockedStatus": "Unlocked",
+    "cta": "Manage"
+  },
+  "design": {
+    "label": "Design",
+    "locked": "Premium only",
+    "unlock": "Unlock with Premium"
+  },
+  "legal": {
+    "label": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "preferences": {
+    "label": "Preferences",
+    "sound": "Sound effects",
+    "notifications": "Notifications"
+  },
+  "help": {
+    "label": "How to use"
+  }
+}

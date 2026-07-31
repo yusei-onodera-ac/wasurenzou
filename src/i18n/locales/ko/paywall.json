@@ -1,0 +1,20 @@
+{
+  "title": "프리미엄으로 업그레이드",
+  "subtitle": "광고 없이, 전용 디자인으로, 작업 수 제한 없이.",
+  "features": {
+    "noAds": "광고 제거",
+    "themes": "전용 디자인 사용 가능",
+    "unlimited": "작업 수 제한 없음"
+  },
+  "monthly": "월간 플랜",
+  "yearly": "연간 플랜",
+  "perMonth": "/월",
+  "perYear": "/년",
+  "purchase": "구독하기",
+  "restore": "구매 복원",
+  "close": "닫기",
+  "purchasing": "처리 중…",
+  "purchaseSuccess": "프리미엄에 오신 것을 환영해요!",
+  "restoreSuccess": "복원했어요",
+  "restoreNone": "복원할 구매 내역이 없어요"
+}

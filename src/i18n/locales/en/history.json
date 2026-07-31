@@ -1,0 +1,30 @@
+{
+  "tabLabel": "My Page",
+  "achievementRate": "Success rate",
+  "completedCount": "Done",
+  "forgottenCount": "Forgotten",
+  "streak": "Day streak",
+  "emptyState": "No records yet",
+  "outcomeCompleted": "Done",
+  "outcomeForgotten": "Forgotten",
+  "profile": {
+    "greeting": "Welcome back, {{name}}",
+    "greetingNoName": "Welcome back",
+    "namePlaceholder": "What should I call you?"
+  },
+  "mascot": {
+    "noHistory": "Nice to meet you! Let's keep tasks in mind together.",
+    "greatStreak": "{{count}} days in a row...! Your memory might be better than mine.",
+    "goodStreak": "{{count}} days in a row, nice pace! Keep it going.",
+    "highRate": "{{rate}}% success rate! You're remembering a lot, well done.",
+    "lowRate": "Forgetting things is only natural. Let's pick it back up, little by little.",
+    "manyForgotten": "Forgetting a bit more lately? I'll keep an eye on things with you.",
+    "default": "Let's keep organizing your head, one task at a time."
+  },
+  "analysis": {
+    "title": "Simple analysis",
+    "totalTasks": "Total tasks recorded",
+    "mostUsedMood": "Most used icon",
+    "noMoodData": "No data yet"
+  }
+}

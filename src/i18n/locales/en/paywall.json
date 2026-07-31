@@ -1,0 +1,20 @@
+{
+  "title": "Upgrade to Premium",
+  "subtitle": "No ads, exclusive designs, and unlimited tasks.",
+  "features": {
+    "noAds": "Remove ads",
+    "themes": "Unlock exclusive designs",
+    "unlimited": "No task limit"
+  },
+  "monthly": "Monthly",
+  "yearly": "Yearly",
+  "perMonth": "/mo",
+  "perYear": "/yr",
+  "purchase": "Subscribe",
+  "restore": "Restore purchases",
+  "close": "Close",
+  "purchasing": "Processing…",
+  "purchaseSuccess": "Welcome to Premium!",
+  "restoreSuccess": "Restored",
+  "restoreNone": "No purchases to restore"
+}

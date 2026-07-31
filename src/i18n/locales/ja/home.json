@@ -1,0 +1,23 @@
+{
+  "tabLabel": "ホーム",
+  "addButton": "新しいタスクを追加",
+  "emptyState": {
+    "title": "まだ何もありません",
+    "subtitle": "＋をタップして、最初のタスクを追加しよう。"
+  },
+  "settingsButtonLabel": "設定",
+  "hint": "タスクは放っておくと忘れて消えちゃうよ。\nタップで復活／スワイプで完了！",
+  "tapCallout": "＼タップ！／",
+  "swipeHint": "終わったタスクを右にスワイプ→",
+  "celebration": "おめでとう！",
+  "dueDateLabel": "期限：{{date}}",
+  "remaining": {
+    "days": "あと{{count}}日で忘れちゃう",
+    "hours": "あと{{count}}時間で忘れちゃう",
+    "minutes": "あと{{count}}分で忘れちゃう"
+  },
+  "toast": {
+    "completed": "完了しました！",
+    "deleted": "削除しました"
+  }
+}

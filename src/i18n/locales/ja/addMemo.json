@@ -1,0 +1,18 @@
+{
+  "title": "あたらしいタスク",
+  "moodPicker": {
+    "label": "アイコンを選ぶ"
+  },
+  "colorPicker": {
+    "label": "色を選ぶ"
+  },
+  "textInputPlaceholder": "やることを入力",
+  "dueDate": {
+    "label": "いつまでに？",
+    "placeholder": "YYYY-MM-DD（省略可）"
+  },
+  "repeatDaily": {
+    "label": "毎日繰り返す"
+  },
+  "limitReached": "無料枠のタスクが満杯です。プレミアムで無制限に。"
+}

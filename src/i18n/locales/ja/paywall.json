@@ -1,0 +1,20 @@
+{
+  "title": "プレミアムにアップグレード",
+  "subtitle": "広告なし・限定デザイン・タスク数無制限で、もっと快適に。",
+  "features": {
+    "noAds": "広告を非表示",
+    "themes": "限定デザインを使用可能",
+    "unlimited": "タスク数の上限なし"
+  },
+  "monthly": "月額プラン",
+  "yearly": "年額プラン",
+  "perMonth": "／月",
+  "perYear": "／年",
+  "purchase": "購入する",
+  "restore": "購入を復元",
+  "close": "閉じる",
+  "purchasing": "処理中…",
+  "purchaseSuccess": "プレミアムへようこそ！",
+  "restoreSuccess": "復元しました",
+  "restoreNone": "復元できる購入はありませんでした"
+}

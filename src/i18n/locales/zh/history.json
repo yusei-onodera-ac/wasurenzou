@@ -1,0 +1,30 @@
+{
+  "tabLabel": "我的页面",
+  "achievementRate": "达成率",
+  "completedCount": "已完成",
+  "forgottenCount": "已遗忘",
+  "streak": "连续天数",
+  "emptyState": "还没有记录",
+  "outcomeCompleted": "已完成",
+  "outcomeForgotten": "已遗忘",
+  "profile": {
+    "greeting": "{{name}}，欢迎回来",
+    "greetingNoName": "欢迎回来",
+    "namePlaceholder": "想让我怎么称呼你？"
+  },
+  "mascot": {
+    "noHistory": "初次见面！让我们一起把任务留在脑海里吧。",
+    "greatStreak": "连续{{count}}天了…！你的记忆力可能比我还厉害。",
+    "goodStreak": "连续{{count}}天，节奏不错！继续保持吧。",
+    "highRate": "达成率{{rate}}%！记住了不少呢，真棒！",
+    "lowRate": "遗忘是很自然的事。我们一点点找回来吧。",
+    "manyForgotten": "最近是不是容易忘事？我会在旁边陪着你的。",
+    "default": "今天也一点点整理脑海中的任务吧。"
+  },
+  "analysis": {
+    "title": "简单分析",
+    "totalTasks": "已记录的任务总数",
+    "mostUsedMood": "最常用的图标",
+    "noMoodData": "还没有数据"
+  }
+}

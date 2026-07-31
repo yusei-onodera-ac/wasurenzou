@@ -1,0 +1,18 @@
+{
+  "title": "新任务",
+  "moodPicker": {
+    "label": "选择图标"
+  },
+  "colorPicker": {
+    "label": "选择颜色"
+  },
+  "textInputPlaceholder": "输入要做的事",
+  "dueDate": {
+    "label": "截止日期",
+    "placeholder": "YYYY-MM-DD（可选）"
+  },
+  "repeatDaily": {
+    "label": "每天重复"
+  },
+  "limitReached": "免费任务已用完。解锁高级版即可无限使用。"
+}

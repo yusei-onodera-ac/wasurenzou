@@ -1,0 +1,20 @@
+{
+  "title": "升级到高级版",
+  "subtitle": "无广告、专属设计、任务数量不受限。",
+  "features": {
+    "noAds": "移除广告",
+    "themes": "解锁专属设计",
+    "unlimited": "任务数量不受限"
+  },
+  "monthly": "月度方案",
+  "yearly": "年度方案",
+  "perMonth": "/月",
+  "perYear": "/年",
+  "purchase": "订阅",
+  "restore": "恢复购买",
+  "close": "关闭",
+  "purchasing": "处理中…",
+  "purchaseSuccess": "欢迎加入高级版！",
+  "restoreSuccess": "已恢复",
+  "restoreNone": "没有可恢复的购买"
+}

@@ -1,0 +1,25 @@
+{
+  "appName": "忘不了大象",
+  "appSubtitle": "在遗忘之前，把任务留在这里。",
+  "untitledTask": "任务",
+  "actions": {
+    "save": "保存",
+    "cancel": "取消",
+    "close": "关闭",
+    "delete": "删除",
+    "restore": "恢复",
+    "complete": "完成",
+    "edit": "编辑"
+  },
+  "editMenu": {
+    "title": "要做什么？"
+  },
+  "confirmDelete": {
+    "title": "要放手吗？",
+    "message": "这个任务将永远消失。"
+  },
+  "confirmComplete": {
+    "title": "标记为完成？",
+    "message": "将被记录为已完成。"
+  }
+}

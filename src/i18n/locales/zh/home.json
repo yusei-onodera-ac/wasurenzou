@@ -1,0 +1,23 @@
+{
+  "tabLabel": "首页",
+  "addButton": "添加新任务",
+  "emptyState": {
+    "title": "还什么都没有",
+    "subtitle": "点击＋，添加你的第一个任务吧。"
+  },
+  "settingsButtonLabel": "设置",
+  "hint": "任务放着不管会被遗忘消失。\n点击可恢复，滑动即完成！",
+  "tapCallout": "点一下！",
+  "swipeHint": "完成的任务向右滑动 →",
+  "celebration": "太棒了！",
+  "dueDateLabel": "截止 {{date}}",
+  "remaining": {
+    "days": "{{count}}天后会被遗忘",
+    "hours": "{{count}}小时后会被遗忘",
+    "minutes": "{{count}}分钟后会被遗忘"
+  },
+  "toast": {
+    "completed": "已完成！",
+    "deleted": "已删除"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": "새로운 할 일",
+  "moodPicker": {
+    "label": "아이콘 선택"
+  },
+  "colorPicker": {
+    "label": "색을 선택하세요"
+  },
+  "textInputPlaceholder": "할 일을 입력하세요",
+  "dueDate": {
+    "label": "마감일",
+    "placeholder": "YYYY-MM-DD (선택)"
+  },
+  "repeatDaily": {
+    "label": "매일 반복"
+  },
+  "limitReached": "무료 할 일이 가득 찼어요. 프리미엄으로 무제한으로 사용하세요."
+}

@@ -1,0 +1,29 @@
+{
+  "title": "How to use",
+  "sections": [
+    {
+      "heading": "Before a task fades",
+      "body": "Tasks slowly fade from your mind if left alone. Tap a card to say \"I remember\" and reset the countdown."
+    },
+    {
+      "heading": "Completing a task",
+      "body": "Swipe a task right to finish it. Choosing \"Yes\" plays a little celebration and records it as done."
+    },
+    {
+      "heading": "Editing",
+      "body": "Tap the pencil icon on the right of a card to open a menu for completing or deleting it."
+    },
+    {
+      "heading": "Reordering",
+      "body": "Long-press a card, then drag up or down to put tasks in whatever order you like."
+    },
+    {
+      "heading": "If a task disappears",
+      "body": "A dedicated screen appears when a task fully fades. Watch an ad to bring it back, or choose \"Let it go\" to record it in your history."
+    },
+    {
+      "heading": "Premium",
+      "body": "Premium removes ads and unlocks extra design themes."
+    }
+  ]
+}

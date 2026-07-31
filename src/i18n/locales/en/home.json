@@ -1,0 +1,23 @@
+{
+  "tabLabel": "Home",
+  "addButton": "Add a new task",
+  "emptyState": {
+    "title": "Nothing here yet",
+    "subtitle": "Tap + to add your first task."
+  },
+  "settingsButtonLabel": "Settings",
+  "hint": "Leave it alone and you'll forget it.\nTap to revive, swipe to complete!",
+  "tapCallout": "Tap it!",
+  "swipeHint": "Swipe done tasks right →",
+  "celebration": "Great job!",
+  "dueDateLabel": "Due {{date}}",
+  "remaining": {
+    "days": "Forgotten in {{count}}d",
+    "hours": "Forgotten in {{count}}h",
+    "minutes": "Forgotten in {{count}}m"
+  },
+  "toast": {
+    "completed": "Marked as done!",
+    "deleted": "Deleted"
+  }
+}

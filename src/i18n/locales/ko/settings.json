@@ -1,0 +1,34 @@
+{
+  "title": "설정",
+  "language": {
+    "label": "언어",
+    "system": "시스템",
+    "ja": "日本語",
+    "en": "English",
+    "ko": "한국어",
+    "zh": "中文"
+  },
+  "premium": {
+    "label": "프리미엄",
+    "unlockedStatus": "해제됨",
+    "cta": "관리하기"
+  },
+  "design": {
+    "label": "디자인",
+    "locked": "프리미엄 전용",
+    "unlock": "프리미엄으로 잠금 해제"
+  },
+  "legal": {
+    "label": "법적 정보",
+    "privacy": "개인정보 처리방침",
+    "terms": "이용약관"
+  },
+  "preferences": {
+    "label": "환경 설정",
+    "sound": "효과음",
+    "notifications": "알림"
+  },
+  "help": {
+    "label": "사용 방법"
+  }
+}

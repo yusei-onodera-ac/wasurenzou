@@ -1,0 +1,30 @@
+{
+  "tabLabel": "마이페이지",
+  "achievementRate": "달성률",
+  "completedCount": "달성",
+  "forgottenCount": "잊음",
+  "streak": "연속 일수",
+  "emptyState": "아직 기록이 없어요",
+  "outcomeCompleted": "달성",
+  "outcomeForgotten": "잊음",
+  "profile": {
+    "greeting": "{{name}}님, 어서 오세요",
+    "greetingNoName": "어서 오세요",
+    "namePlaceholder": "불러줄 이름을 입력해줘"
+  },
+  "mascot": {
+    "noHistory": "처음 뵙겠습니다! 저와 함께 할 일을 머릿속에 남겨봐요.",
+    "greatStreak": "{{count}}일 연속이라니…! 제 기억력보다 나은 것 같아요.",
+    "goodStreak": "{{count}}일 연속, 좋은 페이스예요! 계속 이어가봐요.",
+    "highRate": "달성률 {{rate}}%! 많이 기억해내고 있네요, 대단해요!",
+    "lowRate": "잊는 건 자연스러운 일이에요. 다시 조금씩 되찾아가요.",
+    "manyForgotten": "요즘 조금 잊기 쉬운가요? 제가 옆에서 지켜볼게요.",
+    "default": "오늘도 차근차근 머릿속을 정리해봐요."
+  },
+  "analysis": {
+    "title": "간단 분석",
+    "totalTasks": "기록된 총 할 일",
+    "mostUsedMood": "자주 쓰는 아이콘",
+    "noMoodData": "아직 데이터가 없어요"
+  }
+}

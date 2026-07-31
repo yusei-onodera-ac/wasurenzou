@@ -1,0 +1,26 @@
+{
+  "appName": "Wasurenzo",
+  "appSubtitle": "Your tasks live here — until you forget them.",
+  "untitledTask": "A task",
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "delete": "Delete",
+    "restore": "Restore",
+    "complete": "Complete",
+    "edit": "Edit",
+    "yes": "Yes",
+    "back": "Back"
+  },
+  "editMenu": {
+    "title": "What would you like to do?"
+  },
+  "confirmDelete": {
+    "title": "Let this one go?",
+    "message": "This task will be gone for good."
+  },
+  "confirmComplete": {
+    "title": "Did you complete this task?"
+  }
+}

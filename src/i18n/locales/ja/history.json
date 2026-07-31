@@ -1,0 +1,30 @@
+{
+  "tabLabel": "マイページ",
+  "achievementRate": "達成率",
+  "completedCount": "達成",
+  "forgottenCount": "消えた",
+  "streak": "連続日数",
+  "emptyState": "まだ記録がありません",
+  "outcomeCompleted": "達成",
+  "outcomeForgotten": "消えた",
+  "profile": {
+    "greeting": "{{name}}さん、おかえりなさい",
+    "greetingNoName": "おかえりなさい",
+    "namePlaceholder": "呼んでほしい名前"
+  },
+  "mascot": {
+    "noHistory": "はじめまして！ぼくと一緒にタスクを頭の中に残していこう。",
+    "greatStreak": "{{count}}日連続だね…！きみの記憶力、ぼくよりすごいかも。",
+    "goodStreak": "{{count}}日連続、いい調子！このまま続けよう。",
+    "highRate": "達成率{{rate}}%！たくさん思い出せてるね、えらい！",
+    "lowRate": "忘れちゃうのは自然なこと。また少しずつ思い出していこう。",
+    "manyForgotten": "最近ちょっと忘れがちかな？ぼくが隣で見てるよ。",
+    "default": "今日もコツコツ、頭の中を整理していこう。"
+  },
+  "analysis": {
+    "title": "かんたん分析",
+    "totalTasks": "記録した合計タスク",
+    "mostUsedMood": "よく使うアイコン",
+    "noMoodData": "まだデータがないよ"
+  }
+}

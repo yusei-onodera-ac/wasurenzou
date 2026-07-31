@@ -1,0 +1,23 @@
+{
+  "tabLabel": "홈",
+  "addButton": "새 할 일 추가",
+  "emptyState": {
+    "title": "아직 아무것도 없어요",
+    "subtitle": "＋를 눌러 첫 할 일을 추가하세요."
+  },
+  "settingsButtonLabel": "설정",
+  "hint": "할 일을 그냥 두면 잊혀져요.\n탭하면 복구, 스와이프하면 완료!",
+  "tapCallout": "탭해봐요!",
+  "swipeHint": "끝난 할 일은 오른쪽으로 스와이프 →",
+  "celebration": "축하해요!",
+  "dueDateLabel": "마감 {{date}}",
+  "remaining": {
+    "days": "{{count}}일 후에 잊혀져요",
+    "hours": "{{count}}시간 후에 잊혀져요",
+    "minutes": "{{count}}분 후에 잊혀져요"
+  },
+  "toast": {
+    "completed": "완료했어요!",
+    "deleted": "삭제했어요"
+  }
+}

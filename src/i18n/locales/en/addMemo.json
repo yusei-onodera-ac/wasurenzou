@@ -1,0 +1,18 @@
+{
+  "title": "New Task",
+  "moodPicker": {
+    "label": "Pick an icon"
+  },
+  "colorPicker": {
+    "label": "Pick a color"
+  },
+  "textInputPlaceholder": "What do you need to do?",
+  "dueDate": {
+    "label": "Due by",
+    "placeholder": "YYYY-MM-DD (optional)"
+  },
+  "repeatDaily": {
+    "label": "Repeat daily"
+  },
+  "limitReached": "You've filled up your free tasks. Unlock Premium for unlimited space."
+}
