@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { Modal, Pressable, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
+import { Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BlurView } from 'expo-blur';
+import DateTimePicker, { type DateTimePickerEvent } from '@react-native-community/datetimepicker';
 
 import { BUBBLE_COLORS, colors } from '../../theme/colors';
-import { parseDateInput } from '../../utils/date';
+import { formatShortDate } from '../../utils/date';
+import { ALL_WEEKDAYS, WEEKDAY_WEEKDAYS, WEEKEND_WEEKDAYS } from '../../store/useBubbleStore';
+import type { Weekday } from '../../types/bubble';
 import { DEFAULT_MOOD, type MoodId } from '../icons/MoodIcon';
 import { MoodPicker } from './MoodPicker';
 import { ColorPicker } from './ColorPicker';
@@ -15,8 +18,24 @@ export interface AddMemoInput {
   text: string | null;
   color: string;
   dueDate: number | null;
-  repeatDaily: boolean;
+  repeatDays: Weekday[] | null;
 }
+
+const ALL_DAYS: Weekday[] = [0, 1, 2, 3, 4, 5, 6];
+
+function sameDays(a: Weekday[], b: Weekday[]): boolean {
+  if (a.length !== b.length) return false;
+  const sortedA = [...a].sort();
+  const sortedB = [...b].sort();
+  return sortedA.every((value, index) => value === sortedB[index]);
+}
+
+const PRESETS: { key: string; days: Weekday[] }[] = [
+  { key: 'off', days: [] },
+  { key: 'daily', days: ALL_WEEKDAYS },
+  { key: 'weekdays', days: WEEKDAY_WEEKDAYS },
+  { key: 'weekend', days: WEEKEND_WEEKDAYS },
+];
 
 interface AddMemoSheetProps {
   visible: boolean;
@@ -31,15 +50,17 @@ export function AddMemoSheet({ visible, onClose, onSave }: AddMemoSheetProps) {
   const [mood, setMood] = useState<MoodId>(DEFAULT_MOOD);
   const [color, setColor] = useState<string>(BUBBLE_COLORS[0]);
   const [text, setText] = useState('');
-  const [dueDateText, setDueDateText] = useState('');
-  const [repeatDaily, setRepeatDaily] = useState(false);
+  const [dueDate, setDueDate] = useState<Date | null>(null);
+  const [datePickerVisible, setDatePickerVisible] = useState(false);
+  const [repeatDays, setRepeatDays] = useState<Weekday[]>([]);
 
   const resetAndClose = () => {
     setMood(DEFAULT_MOOD);
     setColor(BUBBLE_COLORS[0]);
     setText('');
-    setDueDateText('');
-    setRepeatDaily(false);
+    setDueDate(null);
+    setDatePickerVisible(false);
+    setRepeatDays([]);
     onClose();
   };
 
@@ -48,10 +69,22 @@ export function AddMemoSheet({ visible, onClose, onSave }: AddMemoSheetProps) {
       mood,
       text: text.trim() ? text.trim() : null,
       color,
-      dueDate: parseDateInput(dueDateText),
-      repeatDaily,
+      dueDate: dueDate ? dueDate.getTime() : null,
+      repeatDays: repeatDays.length > 0 ? repeatDays : null,
     });
     resetAndClose();
+  };
+
+  const handleDateChange = (event: DateTimePickerEvent, selected?: Date) => {
+    if (Platform.OS === 'android') setDatePickerVisible(false);
+    if (event.type === 'dismissed') return;
+    if (selected) setDueDate(selected);
+  };
+
+  const toggleDay = (day: Weekday) => {
+    setRepeatDays((current) =>
+      current.includes(day) ? current.filter((value) => value !== day) : [...current, day].sort()
+    );
   };
 
   return (
@@ -60,7 +93,10 @@ export function AddMemoSheet({ visible, onClose, onSave }: AddMemoSheetProps) {
         <Pressable style={StyleSheet.absoluteFill} onPress={resetAndClose} />
         <View style={styles.sheet}>
           <BlurView intensity={50} tint="light" style={StyleSheet.absoluteFill} />
-          <View style={[styles.sheetContent, { paddingBottom: insets.bottom + 20 }]}>
+          <ScrollView
+            keyboardShouldPersistTaps="handled"
+            contentContainerStyle={[styles.sheetContent, { paddingBottom: insets.bottom + 20 }]}
+          >
             <Text style={styles.title}>{t('addMemo:title')}</Text>
 
             <TextInput
@@ -74,23 +110,83 @@ export function AddMemoSheet({ visible, onClose, onSave }: AddMemoSheetProps) {
             />
 
             <Text style={styles.label}>{t('addMemo:dueDate.label')}</Text>
-            <TextInput
-              style={styles.textInput}
-              placeholder={t('addMemo:dueDate.placeholder')}
-              placeholderTextColor={colors.textSecondary}
-              value={dueDateText}
-              onChangeText={setDueDateText}
-              maxLength={10}
-            />
+            <View style={styles.dueDateRow}>
+              <Pressable
+                accessibilityRole="button"
+                style={styles.dueDateTrigger}
+                onPress={() => setDatePickerVisible((visible) => !visible)}
+              >
+                <Text style={[styles.dueDateTriggerText, !dueDate && { color: colors.textSecondary }]}>
+                  {dueDate ? formatShortDate(dueDate.getTime()) : t('addMemo:dueDate.placeholder')}
+                </Text>
+              </Pressable>
+              {dueDate ? (
+                <Pressable
+                  accessibilityRole="button"
+                  style={styles.dueDateClear}
+                  onPress={() => {
+                    setDueDate(null);
+                    setDatePickerVisible(false);
+                  }}
+                >
+                  <Text style={styles.dueDateClearText}>{t('addMemo:dueDate.clear')}</Text>
+                </Pressable>
+              ) : null}
+            </View>
+            {datePickerVisible ? (
+              <View style={styles.pickerWrap}>
+                <DateTimePicker
+                  value={dueDate ?? new Date()}
+                  mode="date"
+                  display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                  onChange={handleDateChange}
+                />
+                {Platform.OS === 'ios' ? (
+                  <Pressable
+                    accessibilityRole="button"
+                    style={styles.pickerDoneButton}
+                    onPress={() => setDatePickerVisible(false)}
+                  >
+                    <Text style={styles.pickerDoneText}>{t('common:actions.save')}</Text>
+                  </Pressable>
+                ) : null}
+              </View>
+            ) : null}
 
-            <View style={styles.repeatRow}>
-              <Text style={styles.label}>{t('addMemo:repeatDaily.label')}</Text>
-              <Switch
-                value={repeatDaily}
-                onValueChange={setRepeatDaily}
-                trackColor={{ true: colors.accent, false: '#E0D6E8' }}
-                thumbColor="#FFFFFF"
-              />
+            <Text style={styles.label}>{t('addMemo:repeat.label')}</Text>
+            <View style={styles.presetRow}>
+              {PRESETS.map((preset) => {
+                const active = sameDays(preset.days, repeatDays);
+                return (
+                  <Pressable
+                    key={preset.key}
+                    accessibilityRole="button"
+                    style={[styles.presetChip, active && styles.presetChipActive]}
+                    onPress={() => setRepeatDays(preset.days)}
+                  >
+                    <Text style={[styles.presetChipText, active && styles.presetChipTextActive]}>
+                      {t(`addMemo:repeat.${preset.key}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+            <View style={styles.dayRow}>
+              {ALL_DAYS.map((day) => {
+                const active = repeatDays.includes(day);
+                return (
+                  <Pressable
+                    key={day}
+                    accessibilityRole="button"
+                    style={[styles.dayCircle, active && styles.dayCircleActive]}
+                    onPress={() => toggleDay(day)}
+                  >
+                    <Text style={[styles.dayCircleText, active && styles.dayCircleTextActive]}>
+                      {t(`addMemo:repeat.days.${day}`)}
+                    </Text>
+                  </Pressable>
+                );
+              })}
             </View>
 
             <Text style={styles.label}>{t('addMemo:moodPicker.label')}</Text>
@@ -107,7 +203,7 @@ export function AddMemoSheet({ visible, onClose, onSave }: AddMemoSheetProps) {
                 <Text style={styles.saveText}>{t('common:actions.save')}</Text>
               </Pressable>
             </View>
-          </View>
+          </ScrollView>
         </View>
       </View>
     </Modal>
@@ -152,11 +248,94 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.textPrimary,
   },
-  repeatRow: {
+  dueDateRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 8,
+    marginTop: 8,
+  },
+  dueDateTrigger: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#EADCF2',
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+  dueDateTriggerText: {
+    fontSize: 14,
+    color: colors.textPrimary,
+  },
+  dueDateClear: {
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+  },
+  dueDateClearText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: colors.textSecondary,
+  },
+  pickerWrap: {
+    backgroundColor: 'rgba(255,255,255,0.6)',
+    borderRadius: 14,
+    overflow: 'hidden',
+  },
+  pickerDoneButton: {
+    alignSelf: 'flex-end',
+    paddingHorizontal: 18,
+    paddingVertical: 10,
+  },
+  pickerDoneText: {
+    color: colors.accent,
+    fontSize: 14,
+    fontWeight: '700',
+  },
+  presetRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 8,
+  },
+  presetChip: {
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 14,
+    backgroundColor: '#F4EEF9',
+  },
+  presetChipActive: {
+    backgroundColor: colors.accent,
+  },
+  presetChipText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: colors.textSecondary,
+  },
+  presetChipTextActive: {
+    color: '#FFFFFF',
+  },
+  dayRow: {
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 4,
+    marginTop: 8,
+  },
+  dayCircle: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F4EEF9',
+  },
+  dayCircleActive: {
+    backgroundColor: colors.accent,
+  },
+  dayCircleText: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: colors.textSecondary,
+  },
+  dayCircleTextActive: {
+    color: '#FFFFFF',
   },
   actions: {
     flexDirection: 'row',

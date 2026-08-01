@@ -1,4 +1,4 @@
-export const FREE_BUBBLE_LIMIT = 30;
+export const FREE_BUBBLE_LIMIT = 8;
 
 export function canAddBubble(currentCount: number, isPremium: boolean): boolean {
   if (isPremium) return true;

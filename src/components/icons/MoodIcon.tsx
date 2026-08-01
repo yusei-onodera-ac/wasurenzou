@@ -14,22 +14,15 @@ export type MoodId =
   | 'frustrated'
   | 'loved';
 
-export const MOOD_IDS: MoodId[] = [
-  'thought',
-  'happy',
-  'sad',
-  'angry',
-  'sleepy',
-  'idea',
-  'done',
-  'love',
-  'anxious',
-  'celebrate',
-  'frustrated',
-  'loved',
-];
+/** Non-face icons — available on the free plan. */
+export const FREE_MOOD_IDS: MoodId[] = ['idea', 'done', 'love', 'celebrate'];
 
-export const DEFAULT_MOOD: MoodId = 'thought';
+/** Face icons — premium-only. */
+export const PREMIUM_MOOD_IDS: MoodId[] = ['thought', 'happy', 'sad', 'angry', 'sleepy', 'anxious', 'frustrated', 'loved'];
+
+export const MOOD_IDS: MoodId[] = [...FREE_MOOD_IDS, ...PREMIUM_MOOD_IDS];
+
+export const DEFAULT_MOOD: MoodId = 'idea';
 
 interface MoodIconProps {
   mood: MoodId;
@@ -169,10 +162,8 @@ function renderSymbol(mood: MoodId, color: string) {
   }
 }
 
-const SYMBOL_MOODS: MoodId[] = ['idea', 'done', 'love', 'celebrate'];
-
 export function MoodIcon({ mood, size = 24, color = '#4A4458' }: MoodIconProps) {
-  const isSymbol = SYMBOL_MOODS.includes(mood);
+  const isSymbol = FREE_MOOD_IDS.includes(mood);
   return (
     <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
       {isSymbol ? renderSymbol(mood, color) : renderFace(mood, color)}

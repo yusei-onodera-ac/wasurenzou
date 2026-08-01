@@ -7,6 +7,7 @@ import { useThemeStore } from '../../store/useThemeStore';
 import { useEntitlementStore } from '../../store/useEntitlementStore';
 import { THEMES } from '../../theme/themes';
 import { useThemeColors } from '../../theme/useThemeColors';
+import { ElephantMascot } from '../icons/ElephantMascot';
 
 export function ThemeSection() {
   const { t } = useTranslation('settings');
@@ -29,7 +30,7 @@ export function ThemeSection() {
   const previewTheme = previewId ? THEMES.find((theme) => theme.id === previewId) : null;
 
   return (
-    <View>
+    <View style={styles.wrap}>
       <View style={styles.row}>
         {THEMES.map((theme) => {
           const isSelected = theme.id === selectedThemeId && (!theme.isPremium || isPremium);
@@ -41,9 +42,18 @@ export function ThemeSection() {
               style={[styles.swatch, isSelected && { borderColor: colors.accent }]}
               onPress={() => handlePress(theme.id, theme.isPremium)}
             >
-              <View style={[styles.swatchDot, { backgroundColor: theme.swatchPreview[0] }]} />
-              <View style={[styles.swatchDot, { backgroundColor: theme.swatchPreview[1] }]} />
-              <View style={[styles.swatchDot, { backgroundColor: theme.swatchPreview[2] }]} />
+              {theme.illustrated ? (
+                <>
+                  <ElephantMascot size={20} />
+                  <View style={[styles.swatchDot, { backgroundColor: theme.accent }]} />
+                </>
+              ) : (
+                <>
+                  <View style={[styles.swatchDot, { backgroundColor: theme.swatchPreview[0] }]} />
+                  <View style={[styles.swatchDot, { backgroundColor: theme.swatchPreview[1] }]} />
+                  <View style={[styles.swatchDot, { backgroundColor: theme.swatchPreview[2] }]} />
+                </>
+              )}
               {isLocked ? <View style={[styles.lockBadge, { backgroundColor: colors.textSecondary }]} /> : null}
             </Pressable>
           );
@@ -51,6 +61,7 @@ export function ThemeSection() {
       </View>
       {previewTheme ? (
         <View style={[styles.previewCard, { backgroundColor: previewTheme.background }]}>
+          {previewTheme.illustrated ? <ElephantMascot size={48} /> : null}
           <Text style={[styles.previewText, { color: previewTheme.textPrimary }]}>{t('design.locked')}</Text>
           <Pressable
             accessibilityRole="button"
@@ -66,8 +77,12 @@ export function ThemeSection() {
 }
 
 const styles = StyleSheet.create({
+  wrap: {
+    padding: 16,
+  },
   row: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 10,
   },
   swatch: {

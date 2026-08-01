@@ -9,10 +9,24 @@
   "textInputPlaceholder": "What do you need to do?",
   "dueDate": {
     "label": "Due by",
-    "placeholder": "YYYY-MM-DD (optional)"
+    "placeholder": "Pick a date (optional)",
+    "clear": "Clear"
   },
-  "repeatDaily": {
-    "label": "Repeat daily"
+  "repeat": {
+    "label": "Repeat",
+    "off": "None",
+    "daily": "Daily",
+    "weekdays": "Weekdays",
+    "weekend": "Weekend",
+    "days": {
+      "0": "Su",
+      "1": "Mo",
+      "2": "Tu",
+      "3": "We",
+      "4": "Th",
+      "5": "Fr",
+      "6": "Sa"
+    }
   },
   "limitReached": "You've filled up your free tasks. Unlock Premium for unlimited space."
 }

@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
 import { useEffect, useState } from 'react';
+import { AppState } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
@@ -8,8 +9,12 @@ import * as SplashScreen from 'expo-splash-screen';
 
 import { i18nReadyPromise } from '../src/i18n';
 import { useStreakStore } from '../src/store/useStreakStore';
+import { useBubbleStore } from '../src/store/useBubbleStore';
 import { Toast } from '../src/components/common/Toast';
 import { GlobalAddMemoSheet } from '../src/components/add-memo/GlobalAddMemoSheet';
+
+/** How often to re-check for repeat-tasks whose scheduled day has arrived while the app stays open. */
+const PENDING_CHECK_INTERVAL_MS = 60_000;
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -34,6 +39,30 @@ export default function RootLayout() {
       useStreakStore.getState().recordOpen();
     }
     return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = useBubbleStore.persist.onFinishHydration(() => {
+      useBubbleStore.getState().activatePending();
+    });
+    if (useBubbleStore.persist.hasHydrated()) {
+      useBubbleStore.getState().activatePending();
+    }
+
+    const appStateSubscription = AppState.addEventListener('change', (state) => {
+      if (state === 'active') {
+        useBubbleStore.getState().activatePending();
+      }
+    });
+    const intervalId = setInterval(() => {
+      useBubbleStore.getState().activatePending();
+    }, PENDING_CHECK_INTERVAL_MS);
+
+    return () => {
+      unsubscribe();
+      appStateSubscription.remove();
+      clearInterval(intervalId);
+    };
   }, []);
 
   if (!isI18nReady) {

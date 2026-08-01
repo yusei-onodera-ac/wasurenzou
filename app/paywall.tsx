@@ -53,11 +53,14 @@ export default function PaywallScreen() {
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+      <View style={styles.trialBadge}>
+        <Text style={styles.trialBadgeText}>{t('trialBadge')}</Text>
+      </View>
       <Text style={styles.title}>{t('title')}</Text>
       <Text style={styles.subtitle}>{t('subtitle')}</Text>
 
       <View style={styles.featureList}>
-        {(['noAds', 'themes', 'unlimited'] as const).map((key) => (
+        {(['noAds', 'themes', 'faceIcons', 'unlimited'] as const).map((key) => (
           <View key={key} style={styles.featureRow}>
             <CheckIcon size={16} color={colors.accent} />
             <Text style={styles.featureText}>{t(`features.${key}`)}</Text>
@@ -82,6 +85,7 @@ export default function PaywallScreen() {
                 {product.priceLabel}
                 {product.periodLabel === 'year' ? t('perYear') : t('perMonth')}
               </Text>
+              <Text style={styles.planTrialNote}>{t('trialNote')}</Text>
             </Pressable>
           );
         })}
@@ -90,8 +94,9 @@ export default function PaywallScreen() {
       {statusMessage ? <Text style={styles.status}>{statusMessage}</Text> : null}
 
       <Pressable accessibilityRole="button" style={styles.purchaseButton} onPress={handlePurchase} disabled={isBusy}>
-        {isBusy ? <ActivityIndicator color="#FFFFFF" /> : <Text style={styles.purchaseText}>{t('purchase')}</Text>}
+        {isBusy ? <ActivityIndicator color="#FFFFFF" /> : <Text style={styles.purchaseText}>{t('startTrial')}</Text>}
       </Pressable>
+      <Text style={styles.trialDisclaimer}>{t('trialDisclaimer')}</Text>
 
       <Pressable accessibilityRole="button" onPress={handleRestore} disabled={isBusy}>
         <Text style={styles.restoreText}>{t('restore')}</Text>
@@ -108,6 +113,18 @@ const styles = StyleSheet.create({
   content: {
     padding: 24,
     gap: 20,
+  },
+  trialBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#FFD6EC',
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 14,
+  },
+  trialBadgeText: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: colors.accent,
   },
   title: {
     fontSize: 22,
@@ -161,6 +178,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: colors.textPrimary,
   },
+  planTrialNote: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: '#4CAF7D',
+  },
   status: {
     fontSize: 13,
     color: '#4CAF7D',
@@ -177,6 +199,12 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '700',
+  },
+  trialDisclaimer: {
+    fontSize: 11,
+    color: colors.textSecondary,
+    textAlign: 'center',
+    marginTop: -8,
   },
   restoreText: {
     fontSize: 13,

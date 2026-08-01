@@ -1,9 +1,14 @@
 {
   "title": "升级到高级版",
-  "subtitle": "无广告、专属设计、任务数量不受限。",
+  "subtitle": "先免费试用5天。无广告、专属设计、表情图标、任务数量不受限。",
+  "trialBadge": "5天免费试用",
+  "trialNote": "5天免费",
+  "startTrial": "开始免费试用",
+  "trialDisclaimer": "前5天免费使用，试用期结束后将自动转为付费订阅。可随时取消。",
   "features": {
     "noAds": "移除广告",
     "themes": "解锁专属设计",
+    "faceIcons": "解锁表情图标",
     "unlimited": "任务数量不受限"
   },
   "monthly": "月度方案",

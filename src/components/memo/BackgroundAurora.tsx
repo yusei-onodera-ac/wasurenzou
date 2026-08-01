@@ -4,6 +4,7 @@ import Animated, { Easing, useAnimatedStyle, useSharedValue, withRepeat, withTim
 import { Circle, Defs, RadialGradient, Stop, Svg } from 'react-native-svg';
 
 import { useThemeColors } from '../../theme/useThemeColors';
+import { IllustratedPattern } from './IllustratedPattern';
 
 interface Blob {
   color: string;
@@ -56,6 +57,11 @@ function AuroraBlob({ color, size, top, left, durationMs }: Blob) {
 
 export function BackgroundAurora() {
   const colors = useThemeColors();
+
+  if (colors.illustrated) {
+    return <IllustratedPattern accent={colors.accent} variant={colors.id === 'elephant-dream' ? 'dream' : 'garden'} />;
+  }
+
   const blobs: Blob[] = BLOB_LAYOUT.map((layout, index) => ({ ...layout, color: colors.blobColors[index] }));
 
   return (

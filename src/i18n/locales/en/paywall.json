@@ -1,9 +1,14 @@
 {
   "title": "Upgrade to Premium",
-  "subtitle": "No ads, exclusive designs, and unlimited tasks.",
+  "subtitle": "Start with a 5-day free trial. No ads, exclusive designs, expressive icons, and unlimited tasks.",
+  "trialBadge": "5-day free trial",
+  "trialNote": "5 days free",
+  "startTrial": "Start free trial",
+  "trialDisclaimer": "Free for 5 days, then automatically renews as a paid subscription. Cancel anytime.",
   "features": {
     "noAds": "Remove ads",
     "themes": "Unlock exclusive designs",
+    "faceIcons": "Unlock expressive face icons",
     "unlimited": "No task limit"
   },
   "monthly": "Monthly",

@@ -1,6 +1,8 @@
 export interface ThemePalette {
   id: string;
   isPremium: boolean;
+  /** Premium themes that showcase the elephant mascot instead of plain color dots. */
+  illustrated?: boolean;
   background: string;
   accent: string;
   textPrimary: string;
@@ -26,7 +28,7 @@ export const THEMES: ThemePalette[] = [
   },
   {
     id: 'ocean',
-    isPremium: true,
+    isPremium: false,
     background: '#EAF6FB',
     accent: '#4FB6E0',
     textPrimary: '#234B5C',
@@ -37,7 +39,7 @@ export const THEMES: ThemePalette[] = [
   },
   {
     id: 'lavender',
-    isPremium: true,
+    isPremium: false,
     background: '#F1ECFB',
     accent: '#8B6FD9',
     textPrimary: '#4A3F6B',
@@ -48,7 +50,7 @@ export const THEMES: ThemePalette[] = [
   },
   {
     id: 'sunset',
-    isPremium: true,
+    isPremium: false,
     background: '#FFF1E6',
     accent: '#FF8B5C',
     textPrimary: '#6B3F2E',
@@ -59,7 +61,7 @@ export const THEMES: ThemePalette[] = [
   },
   {
     id: 'mint',
-    isPremium: true,
+    isPremium: false,
     background: '#EAF9F0',
     accent: '#3FC98A',
     textPrimary: '#234B3A',
@@ -70,7 +72,7 @@ export const THEMES: ThemePalette[] = [
   },
   {
     id: 'sakura',
-    isPremium: true,
+    isPremium: false,
     background: '#FFF0F5',
     accent: '#FF6FA5',
     textPrimary: '#6B2F45',
@@ -78,6 +80,30 @@ export const THEMES: ThemePalette[] = [
     surface: '#FFFFFF',
     swatchPreview: ['#FFF0F5', '#FF6FA5', '#FFC1D9'],
     blobColors: ['#FFC1D9', '#FFDCE9', '#FF9FC2'],
+  },
+  {
+    id: 'elephant-dream',
+    isPremium: true,
+    illustrated: true,
+    background: '#FFFFFF',
+    accent: '#B79CFF',
+    textPrimary: '#453C6B',
+    textSecondary: '#8479A8',
+    surface: '#FFFFFF',
+    swatchPreview: ['#FFFFFF', '#B79CFF', '#FFD1E8'],
+    blobColors: ['#D8CCFF', '#FFD1E8', '#C9E7FF'],
+  },
+  {
+    id: 'elephant-garden',
+    isPremium: true,
+    illustrated: true,
+    background: '#FFFFFF',
+    accent: '#FF9F6B',
+    textPrimary: '#6B4A2E',
+    textSecondary: '#A9825F',
+    surface: '#FFFFFF',
+    swatchPreview: ['#FFFFFF', '#FF9F6B', '#B8E3C2'],
+    blobColors: ['#FFD9A8', '#B8E3C2', '#FFC1B0'],
   },
 ];
 

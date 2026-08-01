@@ -9,10 +9,24 @@
   "textInputPlaceholder": "输入要做的事",
   "dueDate": {
     "label": "截止日期",
-    "placeholder": "YYYY-MM-DD（可选）"
+    "placeholder": "选择日期（可选）",
+    "clear": "清除"
   },
-  "repeatDaily": {
-    "label": "每天重复"
+  "repeat": {
+    "label": "重复",
+    "off": "不重复",
+    "daily": "每天",
+    "weekdays": "工作日",
+    "weekend": "周末",
+    "days": {
+      "0": "日",
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六"
+    }
   },
   "limitReached": "免费任务已用完。解锁高级版即可无限使用。"
 }

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
@@ -9,10 +9,8 @@ import { useTaskHistoryStore } from '../../src/store/useTaskHistoryStore';
 import { useStreakStore } from '../../src/store/useStreakStore';
 import { useUserProfileStore } from '../../src/store/useUserProfileStore';
 import { useThemeColors } from '../../src/theme/useThemeColors';
-import { formatDateKey } from '../../src/utils/date';
 import { useCountUp } from '../../src/hooks/useCountUp';
 import { StatTile } from '../../src/components/history/StatTile';
-import { HistoryEntryRow } from '../../src/components/history/HistoryEntryRow';
 import { MascotGreeting } from '../../src/components/history/MascotGreeting';
 import { ProfileNameField } from '../../src/components/history/ProfileNameField';
 import { AnalysisSection } from '../../src/components/history/AnalysisSection';
@@ -31,25 +29,15 @@ export default function HistoryScreen() {
   const displayName = useUserProfileStore((state) => state.displayName);
   const setDisplayName = useUserProfileStore((state) => state.setDisplayName);
 
-  const { completedCount, forgottenCount, achievementRate, groups, topMood } = useMemo(() => {
+  const { completedCount, forgottenCount, achievementRate, topMood } = useMemo(() => {
     let completed = 0;
     let forgotten = 0;
-    const byDate = new Map<string, typeof entries>();
     const moodCounts = new Map<MoodId, number>();
 
-    const sorted = [...entries].sort((a, b) => b.resolvedAt - a.resolvedAt);
-    for (const entry of sorted) {
+    for (const entry of entries) {
       moodCounts.set(entry.mood, (moodCounts.get(entry.mood) ?? 0) + 1);
-
       if (entry.outcome === 'completed') {
         completed += 1;
-        const key = formatDateKey(entry.resolvedAt);
-        const bucket = byDate.get(key);
-        if (bucket) {
-          bucket.push(entry);
-        } else {
-          byDate.set(key, [entry]);
-        }
       } else {
         forgotten += 1;
       }
@@ -71,7 +59,6 @@ export default function HistoryScreen() {
       completedCount: completed,
       forgottenCount: forgotten,
       achievementRate: rate,
-      groups: Array.from(byDate.entries()),
       topMood: bestMood,
     };
   }, [entries]);
@@ -119,23 +106,6 @@ export default function HistoryScreen() {
         </Animated.View>
 
         <AnalysisSection totalTasks={completedCount + forgottenCount} topMood={topMood} />
-
-        {groups.length === 0 ? (
-          <Text style={[styles.emptyText, { color: colors.textSecondary }]}>{t('emptyState')}</Text>
-        ) : (
-          groups.map(([dateKey, dateEntries], index) => (
-            <Animated.View
-              key={dateKey}
-              entering={FadeInDown.duration(400).delay(320 + index * 60).springify()}
-              style={styles.dateGroup}
-            >
-              <Text style={[styles.dateLabel, { color: colors.textSecondary }]}>{dateKey}</Text>
-              {dateEntries.map((entry) => (
-                <HistoryEntryRow key={entry.id} entry={entry} />
-              ))}
-            </Animated.View>
-          ))
-        )}
       </ScrollView>
       </SwipeTabWrapper>
     </View>
@@ -162,18 +132,5 @@ const styles = StyleSheet.create({
   statsRow: {
     flexDirection: 'row',
     gap: 12,
-  },
-  dateGroup: {
-    gap: 4,
-  },
-  dateLabel: {
-    fontSize: 13,
-    fontWeight: '700',
-    marginBottom: 4,
-  },
-  emptyText: {
-    fontSize: 13,
-    textAlign: 'center',
-    marginTop: 20,
   },
 });

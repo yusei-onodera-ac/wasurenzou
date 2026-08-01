@@ -9,10 +9,24 @@
   "textInputPlaceholder": "할 일을 입력하세요",
   "dueDate": {
     "label": "마감일",
-    "placeholder": "YYYY-MM-DD (선택)"
+    "placeholder": "날짜 선택 (선택 사항)",
+    "clear": "지우기"
   },
-  "repeatDaily": {
-    "label": "매일 반복"
+  "repeat": {
+    "label": "반복",
+    "off": "안 함",
+    "daily": "매일",
+    "weekdays": "평일",
+    "weekend": "주말",
+    "days": {
+      "0": "일",
+      "1": "월",
+      "2": "화",
+      "3": "수",
+      "4": "목",
+      "5": "금",
+      "6": "토"
+    }
   },
   "limitReached": "무료 할 일이 가득 찼어요. 프리미엄으로 무제한으로 사용하세요."
 }

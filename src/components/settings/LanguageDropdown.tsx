@@ -6,7 +6,7 @@ import { changeLanguagePreference } from '../../i18n';
 import { SUPPORTED_LOCALES } from '../../i18n/locales';
 import { useSettingsStore, type LanguageOverride } from '../../store/useSettingsStore';
 import { useThemeColors } from '../../theme/useThemeColors';
-import { ChevronDownIcon } from '../icons/ChevronDownIcon';
+import { SettingsRow } from './SettingsRow';
 
 const OPTIONS: LanguageOverride[] = ['system', ...SUPPORTED_LOCALES.map((locale) => locale.code)];
 
@@ -23,10 +23,7 @@ export function LanguageDropdown() {
 
   return (
     <>
-      <Pressable accessibilityRole="button" style={styles.trigger} onPress={() => setOpen(true)}>
-        <Text style={[styles.triggerText, { color: colors.textPrimary }]}>{t(`language.${languageOverride}`)}</Text>
-        <ChevronDownIcon size={14} color={colors.textSecondary} />
-      </Pressable>
+      <SettingsRow label={t('language.label')} value={t(`language.${languageOverride}`)} onPress={() => setOpen(true)} />
       <Modal visible={open} transparent animationType="fade" onRequestClose={() => setOpen(false)}>
         <Pressable style={styles.backdrop} onPress={() => setOpen(false)}>
           <View style={styles.menu}>
@@ -57,19 +54,6 @@ export function LanguageDropdown() {
 }
 
 const styles = StyleSheet.create({
-  trigger: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    backgroundColor: '#F4EEF9',
-    borderRadius: 14,
-  },
-  triggerText: {
-    fontSize: 14,
-    fontWeight: '600',
-  },
   backdrop: {
     flex: 1,
     backgroundColor: 'rgba(74, 68, 88, 0.35)',

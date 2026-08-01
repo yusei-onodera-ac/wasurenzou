@@ -9,10 +9,24 @@
   "textInputPlaceholder": "やることを入力",
   "dueDate": {
     "label": "いつまでに？",
-    "placeholder": "YYYY-MM-DD（省略可）"
+    "placeholder": "日付を選ぶ（省略可）",
+    "clear": "クリア"
   },
-  "repeatDaily": {
-    "label": "毎日繰り返す"
+  "repeat": {
+    "label": "繰り返し",
+    "off": "しない",
+    "daily": "毎日",
+    "weekdays": "平日",
+    "weekend": "週末",
+    "days": {
+      "0": "日",
+      "1": "月",
+      "2": "火",
+      "3": "水",
+      "4": "木",
+      "5": "金",
+      "6": "土"
+    }
   },
   "limitReached": "無料枠のタスクが満杯です。プレミアムで無制限に。"
 }
