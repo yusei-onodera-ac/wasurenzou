@@ -6,6 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
+import mobileAds from 'react-native-google-mobile-ads';
 
 import { i18nReadyPromise } from '../src/i18n';
 import { useStreakStore } from '../src/store/useStreakStore';
@@ -17,6 +18,7 @@ import { GlobalAddMemoSheet } from '../src/components/add-memo/GlobalAddMemoShee
 const PENDING_CHECK_INTERVAL_MS = 60_000;
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
+mobileAds().initialize().catch(() => {});
 
 export default function RootLayout() {
   const [isI18nReady, setIsI18nReady] = useState(false);

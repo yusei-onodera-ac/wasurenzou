@@ -84,6 +84,27 @@ export const useBubbleStore = create<BubbleState>()(
       pending: [],
       addBubble: (input) => {
         const now = Date.now();
+        const repeatDays = input.repeatDays;
+        const startsToday = !repeatDays || repeatDays.length === 0 || repeatDays.includes(new Date(now).getDay() as Weekday);
+
+        if (!startsToday) {
+          // Repeats on specific weekdays that don't include today — hold it until its first scheduled day.
+          const showAt = getNextOccurrence(now, repeatDays!);
+          const bubble: Bubble = {
+            id: generateId(),
+            mood: input.mood,
+            text: input.text,
+            color: input.color,
+            createdAt: showAt,
+            lastReinforcedAt: showAt,
+            reinforceCount: 0,
+            dueDate: input.dueDate,
+            repeatDays,
+          };
+          set({ pending: [...get().pending, { bubble, showAt }] });
+          return bubble;
+        }
+
         const bubble: Bubble = {
           id: generateId(),
           mood: input.mood,
@@ -93,7 +114,7 @@ export const useBubbleStore = create<BubbleState>()(
           lastReinforcedAt: now,
           reinforceCount: 0,
           dueDate: input.dueDate,
-          repeatDays: input.repeatDays,
+          repeatDays,
         };
         set({ bubbles: [...get().bubbles, bubble] });
         scheduleDecayWarnings(bubble).catch(() => {});

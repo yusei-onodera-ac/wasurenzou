@@ -42,7 +42,15 @@
       "expo-localization",
       "expo-notifications",
       "expo-audio",
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "iosAppId": "ca-app-pub-8128891302717593~9335227240",
+          "androidAppId": "ca-app-pub-3940256099942544~3347511713",
+          "userTrackingUsageDescription": "パーソナライズされた広告を表示するために使用します。"
+        }
+      ]
     ]
   }
 }

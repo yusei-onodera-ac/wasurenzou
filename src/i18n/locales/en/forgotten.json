@@ -1,5 +1,6 @@
 {
   "title": "It slipped away…",
   "message": "This task has faded from your mind.",
-  "dontRevive": "Let it go"
+  "dontRevive": "Let it go",
+  "freeRevive": "Revive without an ad (once a day)"
 }

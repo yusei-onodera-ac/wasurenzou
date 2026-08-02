@@ -1,43 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { useTranslation } from 'react-i18next';
+import { StyleSheet, View } from 'react-native';
+import { BannerAd, BannerAdSize } from 'react-native-google-mobile-ads';
 
 import { useEntitlementStore } from '../../store/useEntitlementStore';
-import { colors } from '../../theme/colors';
+import { AD_UNIT_IDS } from '../../services/ads';
 
 export function AdBanner() {
-  const { t } = useTranslation('ads');
   const isPremium = useEntitlementStore((state) => state.isPremium);
 
   if (isPremium) return null;
 
   return (
     <View style={styles.wrap}>
-      <View style={styles.banner}>
-        <Text style={styles.text}>{t('bannerPlaceholder')}</Text>
-      </View>
+      <BannerAd unitId={AD_UNIT_IDS.banner} size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   wrap: {
-    paddingHorizontal: 16,
+    alignItems: 'center',
     paddingTop: 8,
     paddingBottom: 4,
-  },
-  banner: {
-    height: 54,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#F4EEF9',
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: 'rgba(74, 68, 88, 0.14)',
-  },
-  text: {
-    fontSize: 13,
-    fontWeight: '700',
-    color: colors.textSecondary,
-    letterSpacing: 2,
   },
 });

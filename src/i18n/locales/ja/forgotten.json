@@ -1,5 +1,6 @@
 {
   "title": "きえちゃった…",
   "message": "このタスクは頭の中から消えちゃったみたい。",
-  "dontRevive": "戻さない"
+  "dontRevive": "戻さない",
+  "freeRevive": "広告なしで復活(1日1回)"
 }

@@ -6,10 +6,12 @@ interface ForgottenQueueState {
   queue: Bubble[];
   enqueue: (bubble: Bubble) => void;
   dequeue: () => void;
+  clearAll: () => void;
 }
 
 export const useForgottenQueueStore = create<ForgottenQueueState>()((set, get) => ({
   queue: [],
   enqueue: (bubble) => set({ queue: [...get().queue, bubble] }),
   dequeue: () => set({ queue: get().queue.slice(1) }),
+  clearAll: () => set({ queue: [] }),
 }));

@@ -7,8 +7,11 @@ import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { colors } from '../src/theme/colors';
 import { useBubbleStore } from '../src/store/useBubbleStore';
 import { useForgottenQueueStore } from '../src/store/useForgottenQueueStore';
+import { useEntitlementStore } from '../src/store/useEntitlementStore';
+import { useFreeReviveStore } from '../src/store/useFreeReviveStore';
 import { adService } from '../src/services/ads';
 import { playSound } from '../src/services/sound/soundService';
+import { formatDateKey } from '../src/utils/date';
 import { ElephantMascot } from '../src/components/icons/ElephantMascot';
 import { MoodIcon } from '../src/components/icons/MoodIcon';
 
@@ -17,9 +20,12 @@ export default function ForgottenScreen() {
   const router = useRouter();
   const queue = useForgottenQueueStore((state) => state.queue);
   const dequeue = useForgottenQueueStore((state) => state.dequeue);
+  const isPremium = useEntitlementStore((state) => state.isPremium);
+  const lastFreeReviveDateKey = useFreeReviveStore((state) => state.lastUsedDateKey);
   const [isReviving, setIsReviving] = useState(false);
 
   const current = queue[0] ?? null;
+  const canFreeRevive = isPremium && lastFreeReviveDateKey !== formatDateKey(Date.now());
 
   useEffect(() => {
     if (!current) {
@@ -61,6 +67,15 @@ export default function ForgottenScreen() {
     advance();
   };
 
+  const handleFreeRevive = () => {
+    if (isReviving) return;
+    const items = useForgottenQueueStore.getState().queue;
+    items.forEach((item) => useBubbleStore.getState().reviveStashed(item));
+    useForgottenQueueStore.getState().clearAll();
+    useFreeReviveStore.getState().markUsed(formatDateKey(Date.now()));
+    router.replace('/');
+  };
+
   return (
     <View style={styles.container}>
       <Animated.View key={current.id} entering={FadeIn.duration(300)} style={styles.content}>
@@ -88,6 +103,17 @@ export default function ForgottenScreen() {
             <Text style={styles.reviveText}>{t('watchAdToRevive', { ns: 'ads' })}</Text>
           )}
         </Pressable>
+
+        {canFreeRevive ? (
+          <Pressable
+            accessibilityRole="button"
+            style={styles.freeReviveButton}
+            onPress={handleFreeRevive}
+            disabled={isReviving}
+          >
+            <Text style={styles.freeReviveText}>{t('forgotten:freeRevive')}</Text>
+          </Pressable>
+        ) : null}
 
         <Pressable accessibilityRole="button" onPress={handleDontRevive} disabled={isReviving}>
           <Text style={styles.dontReviveText}>{t('forgotten:dontRevive')}</Text>
@@ -159,6 +185,21 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '700',
     color: '#FFFFFF',
+  },
+  freeReviveButton: {
+    width: '100%',
+    height: 48,
+    borderRadius: 18,
+    borderWidth: 2,
+    borderColor: colors.accent,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: -4,
+  },
+  freeReviveText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: colors.accent,
   },
   dontReviveText: {
     fontSize: 13,
