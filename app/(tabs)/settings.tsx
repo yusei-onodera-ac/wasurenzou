@@ -22,7 +22,6 @@ export default function SettingsScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const isPremium = useEntitlementStore((state) => state.isPremium);
-  const setPremium = useEntitlementStore((state) => state.setPremium);
   const soundEnabled = useSettingsStore((state) => state.soundEnabled);
   const setSoundEnabled = useSettingsStore((state) => state.setSoundEnabled);
   const notificationsEnabled = useSettingsStore((state) => state.notificationsEnabled);
@@ -72,12 +71,6 @@ export default function SettingsScreen() {
           <SettingsRow label={t('legal.privacy')} onPress={() => router.push('/privacy')} />
           <SettingsRow label={t('legal.terms')} onPress={() => router.push('/terms')} />
         </SettingsSection>
-
-        {__DEV__ ? (
-          <SettingsSection title="__DEV__">
-            <SettingsRow label="Mock isPremium" switchValue={isPremium} onSwitchChange={setPremium} />
-          </SettingsSection>
-        ) : null}
       </ScrollView>
     </SwipeTabWrapper>
   );

@@ -1,11 +1,8 @@
 const HOUR_MS = 60 * 60 * 1000;
 const DAY_MS = 24 * HOUR_MS;
 
-// TEMP TEST VALUES: forgetting normally takes a minimum of 6h; shortened to
-// 10s so the "task disappeared" flow can be tested quickly. Revert to
-// `6 * HOUR_MS` before shipping.
-export const MIN_DECAY_DURATION_MS = 10 * 1000;
-export const DEFAULT_DECAY_DURATION_MS = 10 * 1000;
+export const MIN_DECAY_DURATION_MS = 6 * HOUR_MS;
+export const DEFAULT_DECAY_DURATION_MS = 6 * HOUR_MS;
 
 const QUIET_HOUR_START = 22;
 const QUIET_HOUR_END = 7;
