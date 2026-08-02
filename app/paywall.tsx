@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { useRouter } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 
 import { colors } from '../src/theme/colors';
 import { useEntitlementStore } from '../src/store/useEntitlementStore';
@@ -52,7 +52,9 @@ export default function PaywallScreen() {
   };
 
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
+    <>
+      <Stack.Screen options={{ title: t('title') }} />
+      <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.trialBadge}>
         <Text style={styles.trialBadgeText}>{t('trialBadge')}</Text>
       </View>
@@ -101,7 +103,8 @@ export default function PaywallScreen() {
       <Pressable accessibilityRole="button" onPress={handleRestore} disabled={isBusy}>
         <Text style={styles.restoreText}>{t('restore')}</Text>
       </Pressable>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 }
 
