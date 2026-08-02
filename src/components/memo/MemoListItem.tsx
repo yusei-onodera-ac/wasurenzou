@@ -247,7 +247,8 @@ export function MemoListItem({ bubble, now, showSwipeHint }: MemoListItemProps) 
   const showTapCallout = now - bubble.lastReinforcedAt > TAP_CALLOUT_THRESHOLD_MS;
 
   return (
-    <AnimatedView style={[styles.wrapper, wrapperAnimatedStyle]} layout={LinearTransition.duration(220)}>
+    <AnimatedView layout={LinearTransition.duration(220)}>
+      <AnimatedView style={[styles.wrapper, wrapperAnimatedStyle]}>
       {showSwipeHint ? <Text style={[styles.swipeHint, { pointerEvents: 'none' }]}>{t('home:swipeHint')}</Text> : null}
       <Animated.View style={[styles.card, cardAnimatedStyle]}>
         <GestureDetector gesture={composedGesture}>
@@ -315,6 +316,7 @@ export function MemoListItem({ bubble, now, showSwipeHint }: MemoListItemProps) 
         {burstVisible ? <ParticleBurst x="50%" y="50%" color={bubble.color} /> : null}
         {celebrationVisible ? <CelebrationOverlay text={t('home:celebration')} /> : null}
       </Animated.View>
+      </AnimatedView>
     </AnimatedView>
   );
 }
