@@ -50,7 +50,8 @@
           "androidAppId": "ca-app-pub-3940256099942544~3347511713",
           "userTrackingUsageDescription": "パーソナライズされた広告を表示するために使用します。"
         }
-      ]
+      ],
+      "expo-iap"
     ]
   }
 }

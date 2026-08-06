@@ -9,6 +9,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import mobileAds from 'react-native-google-mobile-ads';
 
 import { i18nReadyPromise } from '../src/i18n';
+import { iapService } from '../src/services/iap';
 import { useStreakStore } from '../src/store/useStreakStore';
 import { useBubbleStore } from '../src/store/useBubbleStore';
 import { Toast } from '../src/components/common/Toast';
@@ -19,6 +20,7 @@ const PENDING_CHECK_INTERVAL_MS = 60_000;
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 mobileAds().initialize().catch(() => {});
+iapService.initialize().catch(() => {});
 
 export default function RootLayout() {
   const [isI18nReady, setIsI18nReady] = useState(false);
