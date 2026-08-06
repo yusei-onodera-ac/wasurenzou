@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>利用規約 | わすれんぞう</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="wrap">
+  <a class="home-link" href="index.html">← わすれんぞう</a>
+  <h1>利用規約</h1>
+  <p class="updated">最終更新日：2026年7月</p>
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="ja">日本語</button>
+    <button class="lang-tab" data-lang="en">English</button>
+    <button class="lang-tab" data-lang="ko">한국어</button>
+    <button class="lang-tab" data-lang="zh">中文</button>
+  </div>
+
+  <div class="lang-body active" data-lang="ja">本利用規約は「わすれんぞう」（以下「本アプリ」）のご利用にあたっての条件を定めるものです。
+
+【利用について】
+本アプリは個人利用を目的としたタスク管理アプリです。本アプリの利用により生じた損害について、開発者は責任を負いかねます。
+
+【プレミアムプラン】
+月額・年額のプレミアムプランは自動更新され、各ストアの設定からいつでも解約できます。解約は現在の請求期間の終了時に有効となります。
+
+【禁止事項】
+本アプリの不正利用、リバースエンジニアリング、第三者への再配布を禁止します。
+
+【規約の変更】
+本規約は予告なく変更されることがあります。変更後も本アプリを継続してご利用いただいた場合、変更後の規約に同意したものとみなします。</div>
+
+  <div class="lang-body" data-lang="en">These Terms govern your use of "Wasurenzo" (the "App").
+
+Use of the App: this is a personal task-management app. The developer is not liable for damages arising from your use of the App.
+
+Premium plan: monthly and yearly Premium subscriptions renew automatically and can be cancelled anytime from your store account settings. Cancellation takes effect at the end of the current billing period.
+
+Prohibited uses: unauthorized use, reverse engineering, or redistribution of the App to third parties is prohibited.
+
+Changes: these Terms may change without prior notice. Continuing to use the App after changes means you accept the updated Terms.</div>
+
+  <div class="lang-body" data-lang="ko">본 약관은 '와스렌조'(이하 '앱')의 이용 조건을 정합니다.
+
+앱 이용: 본 앱은 개인용 할 일 관리 앱입니다. 앱 사용으로 발생한 손해에 대해 개발자는 책임을 지지 않습니다.
+
+프리미엄 플랜: 월간/연간 구독은 자동으로 갱신되며 스토어 계정 설정에서 언제든지 해지할 수 있습니다. 해지는 현재 결제 기간이 끝난 후 적용됩니다.
+
+금지 행위: 앱의 무단 이용, 리버스 엔지니어링, 제3자 재배포를 금지합니다.
+
+약관 변경: 본 약관은 사전 통지 없이 변경될 수 있습니다. 변경 후에도 앱을 계속 이용하시면 변경된 약관에 동의한 것으로 간주됩니다.</div>
+
+  <div class="lang-body" data-lang="zh">本条款规范您对《忘不了大象》（以下简称「本应用」）的使用。
+
+使用本应用：本应用是个人任务管理应用。因使用本应用而产生的损失，开发者不承担责任。
+
+高级版方案：月度/年度订阅会自动续订，您可以随时在应用商店账号设置中取消。取消将在当前计费周期结束后生效。
+
+禁止行为：禁止未经授权使用、逆向工程或将本应用再分发给第三方。
+
+条款变更：本条款可能在不事先通知的情况下变更。变更后继续使用本应用即视为您同意变更后的条款。</div>
+</div>
+
+<script>
+  var tabs = document.querySelectorAll('.lang-tab');
+  var bodies = document.querySelectorAll('.lang-body');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var lang = tab.getAttribute('data-lang');
+      tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+      bodies.forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
+    });
+  });
+</script>
+</body>
+</html>

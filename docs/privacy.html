@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>プライバシーポリシー | わすれんぞう</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="wrap">
+  <a class="home-link" href="index.html">← わすれんぞう</a>
+  <h1 id="title">プライバシーポリシー</h1>
+  <p class="updated" id="updated">最終更新日：2026年7月</p>
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" data-lang="ja">日本語</button>
+    <button class="lang-tab" data-lang="en">English</button>
+    <button class="lang-tab" data-lang="ko">한국어</button>
+    <button class="lang-tab" data-lang="zh">中文</button>
+  </div>
+
+  <div class="lang-body active" data-lang="ja">本アプリ「わすれんぞう」は、あなたのタスクや設定をすべてお使いの端末内にのみ保存します。外部サーバーへの送信やアカウント登録は必要ありません。
+
+【保存される情報】
+タスクの内容、アイコン、色、期限、達成・消去の履歴、言語設定、テーマ設定は、すべて端末のローカルストレージに保存されます。
+
+【通知】
+タスクが消えそうなときの通知は端末内で処理され、外部には送信されません。
+
+【広告】
+無料プランでは広告ネットワークを通じて広告を表示する場合があります。広告配信のために、広告事業者が広告識別子などの情報を収集することがあります。
+
+【アプリ内課金】
+プレミアムプランの購入はApple App Store／Google Playを通じて行われ、支払い情報は各ストアが管理し、当アプリが直接取得することはありません。
+
+【お問い合わせ】
+ご不明な点があれば、onodera.888.420@icloud.com までご連絡ください。</div>
+
+  <div class="lang-body" data-lang="en">"Wasurenzo" stores all of your tasks and settings only on your own device. No account or server sign-up is required.
+
+What we store: task content, icons, colors, due dates, completion/forgotten history, language, and theme preferences — all in local device storage.
+
+Notifications: reminders about tasks that are about to fade are scheduled and handled entirely on your device.
+
+Ads: the free plan may show ads through an ad network. Ad providers may collect information such as advertising identifiers to serve ads.
+
+In-app purchases: Premium purchases go through the Apple App Store / Google Play. Payment details are handled by the store and are never collected directly by this app.
+
+Contact: if you have questions, please reach out to onodera.888.420@icloud.com.</div>
+
+  <div class="lang-body" data-lang="ko">'와스렌조'는 사용자의 할 일과 설정을 오직 기기 안에만 저장합니다. 계정 등록이나 서버 전송은 필요하지 않습니다.
+
+저장되는 정보: 할 일 내용, 아이콘, 색상, 마감일, 완료/망각 기록, 언어 및 테마 설정이 모두 기기의 로컬 저장소에 저장됩니다.
+
+알림: 곧 사라질 할 일에 대한 알림은 기기 내에서만 처리되며 외부로 전송되지 않습니다.
+
+광고: 무료 플랜에서는 광고 네트워크를 통해 광고가 표시될 수 있습니다. 광고 사업자가 광고 식별자 등의 정보를 수집할 수 있습니다.
+
+인앱 결제: 프리미엄 구매는 Apple App Store / Google Play를 통해 이루어지며, 결제 정보는 각 스토어가 관리하고 본 앱이 직접 수집하지 않습니다.
+
+문의: 궁금한 점이 있으시면 onodera.888.420@icloud.com 으로 문의해 주세요.</div>
+
+  <div class="lang-body" data-lang="zh">《忘不了大象》仅将您的任务和设置保存在您自己的设备上，无需注册账号或联网上传。
+
+我们存储的信息：任务内容、图标、颜色、截止日期、完成/遗忘记录、语言和主题设置，均保存在设备本地存储中。
+
+通知：任务即将消失的提醒完全在设备本地处理，不会发送到外部。
+
+广告：免费版可能通过广告网络展示广告。广告服务商可能会收集广告标识符等信息用于投放广告。
+
+应用内购买：高级版购买通过 Apple App Store / Google Play 完成，付款信息由各应用商店管理，本应用不会直接获取。
+
+联系我们：如有疑问，请联系 onodera.888.420@icloud.com。</div>
+</div>
+
+<script>
+  var tabs = document.querySelectorAll('.lang-tab');
+  var bodies = document.querySelectorAll('.lang-body');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var lang = tab.getAttribute('data-lang');
+      tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+      bodies.forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
+    });
+  });
+</script>
+</body>
+</html>
