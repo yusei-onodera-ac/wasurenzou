@@ -14,7 +14,8 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.onodera.wasurenzou",
       "infoPlist": {
-        "NSUserTrackingUsageDescription": "パーソナライズされた広告を表示するために使用します。"
+        "NSUserTrackingUsageDescription": "パーソナライズされた広告を表示するために使用します。",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -52,6 +53,13 @@
         }
       ],
       "expo-iap"
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "113986c5-6144-4135-9707-b098bde62d76"
+      }
+    },
+    "owner": "onoyu"
   }
 }
